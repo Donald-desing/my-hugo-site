@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ .Title }}</title>
+    <meta name="description" content="{{ .Description }}">
     <link rel="stylesheet" href="{{ "css/custom.css" | absURL }}">
 </head>
 <body>
     <header>
         <h1>{{ .Site.Title }}</h1>
+        {{ partial "social-media.html" . }}
         <nav>
             <ul>
                 {{ range .Site.Menus.main }}
@@ -24,4 +26,4 @@
         <p>&copy; 2025 My Hugo Site</p>
     </footer>
 </body>
-</html>
+        </html>
