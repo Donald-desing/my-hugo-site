@@ -1,8 +1,3 @@
-baseURL = "https://<your-vercel-domain>"
-languageCode = "en-us"
-title = "My Hugo Site"
-theme = "custom-theme"
-
 [menu]
   [[menu.main]]
     name = "Home"
@@ -13,3 +8,8 @@ theme = "custom-theme"
     name = "Questions"
     url = "/posts/"
     weight = 2
+
+  [[menu.main]]
+    name = "Contact"
+    url = "/contact/"
+    weight = 3
