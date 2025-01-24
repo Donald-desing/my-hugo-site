@@ -8,76 +8,24 @@
     <link rel="stylesheet" href="{{ "css/custom.css" | absURL }}">
     <!-- Firebase SDKs -->
     <script type="module">
-        // Import the functions you need from the SDKs you need
+        // Firebase configuration and initialization
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js";
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-auth.js";
         import { getFirestore, collection, addDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js";
 
-        // Your web app's Firebase configuration
         const firebaseConfig = {
-            apiKey: "AIzaSyC_QiFSIy2VXbhgQWBjYSwU2TTCfg2hlZ0",
-            authDomain: "comment-fb212.firebaseapp.com",
-            projectId: "comment-fb212",
-            storageBucket: "comment-fb212.appspot.com",
-            messagingSenderId: "882005916678",
-            appId: "1:882005916678:web:0fddc6fe2d0b6b84fb9787",
-            measurementId: "G-NZSHXNSQ97"
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID",
+            measurementId: "YOUR_MEASUREMENT_ID"
         };
 
-        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
-
-        // Sign Up
-        document.getElementById('signUpForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = document.getElementById('signUpEmail').value;
-            const password = document.getElementById('signUpPassword').value;
-            try {
-                await createUserWithEmailAndPassword(auth, email, password);
-                alert('Sign Up Successful');
-            } catch (error) {
-                alert('Sign Up Error: ' + error.message);
-            }
-        });
-
-        // Log In
-        document.getElementById('loginForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
-            try {
-                await signInWithEmailAndPassword(auth, email, password);
-                alert('Login Successful');
-            } catch (error) {
-                alert('Login Error: ' + error.message);
-            }
-        });
-
-        // Log Out
-        document.getElementById('logout').addEventListener('click', async () => {
-            try {
-                await signOut(auth);
-                alert('Log Out Successful');
-            } catch (error) {
-                alert('Log Out Error: ' + error.message);
-            }
-        });
-
-        // Display User Info
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                document.getElementById('user-info').style.display = 'block';
-                document.getElementById('user-email').textContent = user.email;
-                document.getElementById('sign-up-form').style.display = 'none';
-                document.getElementById('login-form').style.display = 'none';
-            } else {
-                document.getElementById('user-info').style.display = 'none';
-                document.getElementById('sign-up-form').style.display = 'block';
-                document.getElementById('login-form').style.display = 'block';
-            }
-        });
     </script>
 </head>
 <body>
