@@ -1,0 +1,24 @@
+<script type="module">
+    import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js";
+    import { app } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js";
+
+    const db = getFirestore(app);
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchQuery = urlParams.get('q');
+
+    if (searchQuery) {
+        const postsRef = collection(db, 'posts');
+        const q = query(postsRef, where('title', '>=', searchQuery), where('title', '<=', searchQuery + '\uf8ff'));
+
+        getDocs(q).then((querySnapshot) => {
+            const resultsContainer = document.getElementById('resultsContainer');
+            querySnapshot.forEach((doc) => {
+                const post = doc.data();
+                const resultItem = document.createElement('div');
+                resultItem.innerHTML = `<h3>${post.title}</h3><p>${post.content}</p>`;
+                resultsContainer.appendChild(resultItem);
+            });
+        });
+    }
+</script>
+<div id="resultsContainer"></div>
