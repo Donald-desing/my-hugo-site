@@ -6,7 +6,8 @@
     <title>{{ .Title }}</title>
     <meta name="description" content="{{ .Description }}">
     <link rel="stylesheet" href="{{ "css/custom.css" | absURL }}">
-
+    <link rel="stylesheet" href="{{ "fontawesome/css/all.min.css" | absURL }}"> <!-- Font Awesome CSS -->
+    
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXX-X"></script>
     <script>
@@ -36,6 +37,10 @@
     <header>
         <h1>{{ .Site.Title }}</h1>
         <button id="dark-mode-toggle">Toggle Dark Mode</button>
+        <form method="get" action="/search/" class="search-bar">
+            <input type="text" name="q" placeholder="Search...">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
         {{ partial "social-media.html" . }}
         <nav>
             <ul>
@@ -58,7 +63,11 @@
         {{ block "main" . }}{{ end }}
     </main>
     <footer>
-        <p>&copy; 2025 My Hugo Site</p>
+        <p>&copy; 2025 My Hugo Site. All Rights Reserved.</p>
+        <div class="footer-links">
+            <a href="/privacy-policy/">Privacy Policy</a>
+            <a href="/terms-of-service/">Terms of Service</a>
+        </div>
         {{ partial "newsletter.html" . }}
     </footer>
 
@@ -72,4 +81,4 @@
         });
     </script>
 </body>
-                        </html>
+    </html>
