@@ -1,15 +1,33 @@
+/* Import Font Awesome */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f0f0; /* Custom background color */
+    color: #333; /* Custom text color */
+}
+
 /* Dark Mode Styles */
 body.dark-mode {
     background-color: #333;
     color: #fff;
 }
 
-header.dark-mode {
+header, footer {
+    background-color: #004080; /* Custom header and footer color */
+    color: white;
+}
+
+header.dark-mode, footer.dark-mode {
     background-color: #111;
 }
 
-footer.dark-mode {
-    background-color: #111;
+nav ul li a {
+    color: white;
+}
+
+nav ul li a:hover {
+    background-color: #0059b3; /* Custom hover color */
 }
 
 nav ul li a.dark-mode {
@@ -38,7 +56,9 @@ nav ul li a.dark-mode {
     display: block;
 }
 
-.dropdown-content a:hover {background-color: #f1f1f1;}
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
 
 .dropdown:hover .dropdown-content {
     display: block;
@@ -59,4 +79,41 @@ body.dark-mode .dropdown-content a {
 
 body.dark-mode .dropdown-content a:hover {
     background-color: #555;
-    }
+}
+
+button#dark-mode-toggle {
+    background-color: #004080;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button#dark-mode-toggle:hover {
+    background-color: #0059b3;
+}
+
+/* Search Bar Styles */
+.search-bar {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.search-bar input[type="text"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.search-bar button {
+    padding: 10px;
+    background-color: #004080;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #0059b3;
+}
