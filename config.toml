@@ -1,3 +1,15 @@
+baseURL = "https://my-hugo-site-peach.vercel.app/"
+languageCode = "en-us"
+title = "My Hugo Site"
+theme = "custom-theme"
+
+[params]
+  rssStylesheet = "/rss-stylesheet.xsl"
+
+[outputs]
+  home = ["HTML", "RSS"]
+  rss = ["RSS"]
+
 [menu]
   [[menu.main]]
     name = "Home"
