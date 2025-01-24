@@ -1,0 +1,39 @@
+<div id="profile-info">
+    <h3>Welcome, <span id="username"></span>!</h3>
+    <img src="{{ .Site.BaseURL }}images/default-profile.png" alt="Profile Picture" id="profile-picture">
+    <p id="bio">This is your profile bio. You can update it with more information about yourself.</p>
+</div>
+<div id="user-posts">
+    <h3>Your Posts</h3>
+    <ul id="postsList"></ul>
+</div>
+
+<script type="module">
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-auth.js";
+    import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js";
+    import { app } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js";
+
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    // Display user information
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            document.getElementById('username').textContent = user.email;
+            // Fetch and display user's posts
+            const postsRef = collection(db, 'posts');
+            const q = query(postsRef, where("author", "==", user.email));
+            getDocs(q).then((querySnapshot) => {
+                const postsList = document.getElementById('postsList');
+                querySnapshot.forEach((doc) => {
+                    const post = doc.data();
+                    const postItem = document.createElement('li');
+                    postItem.textContent = post.title;
+                    postsList.appendChild(postItem);
+                });
+            });
+        } else {
+            window.location.href = "/login/";
+        }
+    });
+</script>
