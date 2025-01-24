@@ -6,8 +6,8 @@
     <title>{{ .Title }}</title>
     <meta name="description" content="{{ .Description }}">
     <link rel="stylesheet" href="{{ "css/custom.css" | absURL }}">
-    <link rel="stylesheet" href="{{ "fontawesome/css/all.min.css" | absURL }}"> <!-- Font Awesome CSS -->
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"> <!-- Font Awesome CDN -->
+
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXX-X"></script>
     <script>
@@ -77,8 +77,13 @@
             const toggle = document.getElementById("dark-mode-toggle");
             toggle.addEventListener("click", function() {
                 document.body.classList.toggle("dark-mode");
+                localStorage.setItem('dark-mode', document.body.classList.contains('dark-mode'));
             });
+
+            if (localStorage.getItem('dark-mode') === 'true') {
+                document.body.classList.add('dark-mode');
+            }
         });
     </script>
 </body>
-    </html>
+                </html>
