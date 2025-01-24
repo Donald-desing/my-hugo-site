@@ -36,3 +36,8 @@ theme = "custom-theme"
     name = "About"
     url = "/about/"
     weight = 5
+
+  [[menu.main]]
+    name = "Ask a Question"
+    url = "/ask-question/"
+    weight = 6
