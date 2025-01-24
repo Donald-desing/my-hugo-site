@@ -6,26 +6,27 @@
     <title>{{ .Title }}</title>
     <meta name="description" content="{{ .Description }}">
     <link rel="stylesheet" href="{{ "css/custom.css" | absURL }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- Firebase SDKs -->
     <script type="module">
-        // Firebase configuration and initialization
+        // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js";
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-auth.js";
-        import { getFirestore, collection, addDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-analytics.js";
 
+        // Your web app's Firebase configuration
         const firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_AUTH_DOMAIN",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_STORAGE_BUCKET",
-            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-            appId: "YOUR_APP_ID",
-            measurementId: "YOUR_MEASUREMENT_ID"
+            apiKey: "AIzaSyC_QiFSIy2VXbhgQWBjYSwU2TTCfg2hlZ0",
+            authDomain: "comment-fb212.firebaseapp.com",
+            projectId: "comment-fb212",
+            storageBucket: "comment-fb212.firebasestorage.app",
+            messagingSenderId: "882005916678",
+            appId: "1:882005916678:web:0fddc6fe2d0b6b84fb9787",
+            measurementId: "G-NZSHXNSQ97"
         };
 
+        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
+        const analytics = getAnalytics(app);
     </script>
 </head>
 <body>
@@ -36,26 +37,15 @@
             <input type="text" name="q" placeholder="Search...">
             <button type="submit"><i class="fas fa-search"></i></button>
         </form>
-        {{ partial "social-media.html" . }}
         <nav>
             <ul>
                 {{ range .Site.Menus.main }}
-                    <li class="dropdown">
-                        <a href="{{ .URL }}">{{ .Name }}</a>
-                        {{ if .HasChildren }}
-                            <ul class="dropdown-content">
-                                {{ range .Children }}
-                                    <li><a href="{{ .URL }}">{{ .Name }}</a></li>
-                                {{ end }}
-                            </ul>
-                        {{ end }}
-                    </li>
+                    <li><a href="{{ .URL }}">{{ .Name }}</a></li>
                 {{ end }}
             </ul>
         </nav>
     </header>
     <main>
-        {{ partial "auth.html" . }}
         {{ block "main" . }}{{ end }}
     </main>
     <footer>
@@ -64,7 +54,6 @@
             <a href="/privacy-policy/">Privacy Policy</a>
             <a href="/terms-of-service/">Terms of Service</a>
         </div>
-        {{ partial "newsletter.html" . }}
     </footer>
 
     <!-- Dark Mode Toggle Script -->
