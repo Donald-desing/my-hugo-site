@@ -41,3 +41,12 @@ theme = "custom-theme"
     name = "Ask a Question"
     url = "/ask-question/"
     weight = 6
+
+[params]
+  author = "Your Name"
+  custom_css = ["css/custom.css"]
+  custom_js = ["js/custom.js"]
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
