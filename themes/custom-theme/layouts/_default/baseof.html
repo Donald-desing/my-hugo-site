@@ -6,31 +6,28 @@
     <title>{{ .Title }}</title>
     <meta name="description" content="{{ .Description }}">
     <link rel="stylesheet" href="{{ "css/custom.css" | absURL }}">
-    <script src="https://kit.fontawesome.com/c37232d46c.js" crossorigin="anonymous"></script> <!-- Font Awesome Kit -->
+    <!-- Firebase SDKs -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-analytics.js";
+        import { getDatabase } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-database.js";
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXX-X"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyC_QiFSIy2VXbhgQWBjYSwU2TTCfg2hlZ0",
+            authDomain: "comment-fb212.firebaseapp.com",
+            projectId: "comment-fb212",
+            storageBucket: "comment-fb212.appspot.com",
+            messagingSenderId: "882005916678",
+            appId: "1:882005916678:web:0fddc6fe2d0b6b84fb9787",
+            measurementId: "G-NZSHXNSQ97"
+        };
 
-      gtag('config', 'UA-XXXXXX-X');
-    </script>
-
-    <!-- Structured Data for SEO -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Website",
-      "url": "{{ .Site.BaseURL }}",
-      "name": "{{ .Site.Title }}",
-      "author": {
-        "@type": "Person",
-        "name": "Your Name"
-      },
-      "description": "{{ .Site.Params.description }}"
-    }
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const database = getDatabase(app);
     </script>
 </head>
 <body>
@@ -86,4 +83,4 @@
         });
     </script>
 </body>
-                </html>
+</html>
