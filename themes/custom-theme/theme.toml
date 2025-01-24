@@ -1,0 +1,6 @@
+name = "Custom Theme"
+license = "MIT"
+licenselink = "https://opensource.org/licenses/MIT"
+description = "A custom theme for my Hugo site"
+author = "Your Name"
+min_version = "0.57.0"
