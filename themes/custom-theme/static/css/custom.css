@@ -7,78 +7,37 @@ body {
     padding: 0;
 }
 
-/* Header and Footer Styles */
-header, footer {
+/* Header Styles */
+header {
     background-color: #004080;
     color: white;
     padding: 10px 20px;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 header h1 {
     margin: 0;
-}
-
-footer p {
-    margin: 10px 0;
-}
-
-footer .footer-links a {
-    color: white;
-    margin: 0 10px;
-    text-decoration: none;
-}
-
-footer .footer-links a:hover {
-    text-decoration: underline;
+    font-size: 2rem;
 }
 
 /* Navigation Bar Styles */
 nav ul {
     list-style: none;
     padding: 0;
-    margin: 10px 0;
+    margin: 0;
+    display: flex;
 }
 
 nav ul li {
-    display: inline-block;
-    margin: 0 10px;
-    position: relative;
+    margin-right: 20px;
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
     padding: 10px;
-    display: block;
-}
-
-nav ul li a:hover {
-    background-color: #003366;
-}
-
-nav ul .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 160px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-}
-
-nav ul .dropdown:hover .dropdown-content {
-    display: block;
-}
-
-nav ul .dropdown-content a {
-    color: #004080;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-nav ul .dropdown-content a:hover {
-    background-color: #f1f1f1;
 }
 
 /* Main Content */
@@ -91,170 +50,68 @@ main {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Article Styles */
-article {
-    margin-bottom: 20px;
+/* Thread Container */
+.thread {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
-article h2 {
-    margin: 0 0 10px;
-}
-
-article p {
-    color: #666;
-}
-
-#comment-form, #comments {
-    margin-top: 20px;
-}
-
-#comment-form h3, #comments h3 {
-    margin-bottom: 10px;
-}
-
-/* Comment Form Styles */
-#comment-form form {
-    display: flex;
-    flex-direction: column;
-}
-
-#comment-form input, #comment-form textarea {
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-#comment-form button {
-    padding: 10px;
-    background-color: #004080;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-#comment-form button:hover {
-    background-color: #003366;
-}
-
-/* Comments Section Styles */
-#comments ul {
-    list-style: none;
-    padding: 0;
-}
-
-#comments ul li {
-    padding: 10px;
-    border-bottom: 1px solid #eee;
-}
-
-#comments ul li:last-child {
-    border-bottom: none;
-}
-
-/* Authentication Form Styles */
-#sign-up-form, #login-form, #user-info {
-    margin-top: 20px;
-}
-
-#sign-up-form form, #login-form form, #user-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#sign-up-form input, #login-form input {
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 80%;
-}
-
-#sign-up-form button, #login-form button, #logout {
-    padding: 10px;
-    background-color: #004080;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 80%;
-}
-
-#sign-up-form button:hover, #login-form button:hover, #logout:hover {
-    background-color: #003366;
-}
-
-#user-info h3 {
-    margin: 10px 0;
-}
-
-#user-info button {
-    padding: 10px;
-    background-color: #004080;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-/* Formspree Form Styles */
-.fs-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 600px;
-    margin: 20px auto;
-}
-
-.fs-field {
+/* Post Styles */
+.post {
     margin-bottom: 15px;
-    width: 100%;
 }
 
-.fs-label {
-    display: block;
-    margin-bottom: 5px;
+.post .user {
+    font-weight: bold;
+    margin-right: 5px;
 }
 
-.fs-input, .fs-textarea {
-    width: 100%;
+.post .timestamp {
+    color: #888;
+    font-size: 0.9em;
+}
+
+/* Comment Styles */
+.comment {
+    margin-left: 20px;
+    padding-left: 10px;
+    border-left: 2px solid #ddd;
+}
+
+/* ChatGPT Input */
+.chatgpt-input {
+    margin-top: 20px;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 5px;
+    width: 100%;
 }
 
-.fs-textarea {
-    height: 150px;
-    resize: vertical;
+/* ChatGPT Output */
+.chatgpt-output {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f0f6ff;
+    border-radius: 5px;
 }
 
-.fs-description {
-    font-size: 0.9em;
-    color: #666;
-    margin-top: 5px;
+/* Voting Buttons */
+.vote-buttons {
+    display: flex;
 }
 
-.fs-button-group {
-    text-align: center;
-}
-
-.fs-button {
-    padding: 10px 20px;
-    background-color: #004080;
-    color: white;
-    border: none;
-    border-radius: 4px;
+.vote-button {
+    margin-right: 5px;
     cursor: pointer;
 }
 
-.fs-button:hover {
-    background-color: #003366;
+.vote-button:hover {
+    color: #007bff;
 }
 
-/* Dark Mode Styles */
+/* Dark Mode */
 body.dark-mode {
     background-color: #333;
     color: #fff;
@@ -264,32 +121,8 @@ body.dark-mode main {
     background: #444;
 }
 
-body.dark-mode header, body.dark-mode footer {
+body.dark-mode header {
     background-color: #111;
 }
 
-body.dark-mode #comment-form button, body.dark-mode #sign-up-form button, body.dark-mode #login-form button, body.dark-mode #logout, body.dark-mode .fs-button {
-    background-color: #555;
-}
-
-body.dark-mode #comment-form button:hover, body.dark-mode #sign-up-form button:hover, body.dark-mode #login-form button:hover, body.dark-mode #logout:hover, body.dark-mode .fs-button:hover {
-    background-color: #444;
-}
-
-body.dark-mode #comments ul li {
-    background: #555;
-    border-bottom: 1px solid #444;
-}
-
-body.dark-mode nav ul .dropdown-content a {
-    color: white;
-}
-
-body.dark-mode nav ul .dropdown-content a:hover {
-    background-color: #555;
-}
-
-body.dark-mode nav ul .dropdown-content {
-    background-color: #333;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-}
+/* Add more specific styles as needed */
