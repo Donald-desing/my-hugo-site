@@ -1,6 +1,7 @@
 baseURL = "https://my-hugo-site-peach.vercel.app/"
 languageCode = "en-us"
 title = "My Hugo Site"
+description = "A site for asking and answering questions, sharing updates, and more."
 theme = "custom-theme"
 
 [params]
@@ -25,3 +26,8 @@ theme = "custom-theme"
     name = "Contact"
     url = "/contact/"
     weight = 3
+
+  [[menu.main]]
+    name = "Blog"
+    url = "/blog/"
+    weight = 4
