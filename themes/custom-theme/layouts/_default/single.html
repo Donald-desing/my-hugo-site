@@ -6,7 +6,7 @@
         {{ .Content }}
     </div>
 
-    <!-- Comment Form -->
+    <!-- Post a Comment -->
     <div id="comment-form">
         <h3>Leave a Comment</h3>
         <form id="commentForm">
@@ -23,20 +23,19 @@
     </div>
 
     <script type="module">
-        import { getDatabase, ref, push, onChildAdded } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-database.js";
+        import { getFirestore, collection, addDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js";
         import { app } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js";
 
-        // Reference to the comments in the database
-        const db = getDatabase(app);
-        const commentsRef = ref(db, 'comments');
+        const db = getFirestore(app);
+        const commentsRef = collection(db, 'comments');
 
         // Submit comment
-        document.getElementById('commentForm').addEventListener('submit', (e) => {
+        document.getElementById('commentForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const name = document.getElementById('name').value;
             const comment = document.getElementById('comment').value;
 
-            push(commentsRef, {
+            await addDoc(commentsRef, {
                 name: name,
                 comment: comment,
                 timestamp: Date.now()
@@ -46,11 +45,15 @@
         });
 
         // Display comments
-        onChildAdded(commentsRef, (snapshot) => {
-            const comment = snapshot.val();
-            const commentItem = document.createElement('li');
-            commentItem.textContent = `${comment.name}: ${comment.comment}`;
-            document.getElementById('commentsList').appendChild(commentItem);
+        onSnapshot(commentsRef, (snapshot) => {
+            snapshot.docChanges().forEach((change) => {
+                if (change.type === 'added') {
+                    const comment = change.doc.data();
+                    const commentItem = document.createElement('li');
+                    commentItem.textContent = `${comment.name}: ${comment.comment}`;
+                    document.getElementById('commentsList').appendChild(commentItem);
+                }
+            });
         });
     </script>
 </article>
