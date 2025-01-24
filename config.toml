@@ -31,3 +31,8 @@ theme = "custom-theme"
     name = "Blog"
     url = "/blog/"
     weight = 4
+
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 5
