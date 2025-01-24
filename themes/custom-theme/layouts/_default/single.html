@@ -6,20 +6,52 @@
         {{ .Content }}
     </div>
 
-    <!-- Comments Section (Disqus) -->
-    <div id="disqus_thread"></div>
-    <script>
-        var disqus_config = function () {
-        this.page.url = '{{ .Permalink }}';
-        this.page.identifier = '{{ .File.UniqueID }}';
-        };
-        (function() {
-        var d = document, s = d.createElement('script');
-        s.src = 'https://https-my-hugo-site-peach-vercel-app.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-        })();
+    <!-- Comment Form -->
+    <div id="comment-form">
+        <h3>Leave a Comment</h3>
+        <form id="commentForm">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <textarea id="comment" placeholder="Your Comment" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <!-- Comments Section -->
+    <div id="comments">
+        <h3>Comments</h3>
+        <ul id="commentsList"></ul>
+    </div>
+
+    <script type="module">
+        import { getDatabase, ref, push, onChildAdded } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-database.js";
+        import { app } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js";
+
+        // Reference to the comments in the database
+        const db = getDatabase(app);
+        const commentsRef = ref(db, 'comments');
+
+        // Submit comment
+        document.getElementById('commentForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const comment = document.getElementById('comment').value;
+
+            push(commentsRef, {
+                name: name,
+                comment: comment,
+                timestamp: Date.now()
+            });
+
+            document.getElementById('commentForm').reset();
+        });
+
+        // Display comments
+        onChildAdded(commentsRef, (snapshot) => {
+            const comment = snapshot.val();
+            const commentItem = document.createElement('li');
+            commentItem.textContent = `${comment.name}: ${comment.comment}`;
+            document.getElementById('commentsList').appendChild(commentItem);
+        });
     </script>
-    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
 </article>
 {{ end }}
